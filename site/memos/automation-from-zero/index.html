@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أتمتة الأعمال من الصفر — أكاديمية رمـز</title>
+<link rel="icon" type="image/png" href="../../assets/brand/icon-512.png">
+<link rel="apple-touch-icon" href="../../assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#F2EFE8">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:site_name" content="أكاديمية رمـز">
+<meta property="og:title" content="أتمتة الأعمال من الصفر — أكاديمية رمـز">
+<meta property="og:description" content="أتمتة الأعمال من الصفر: من المهام المتكررة إلى سير عمل ذكي خطوة بخطوة. دليل عملي من أكاديمية رمـز.">
+<meta property="og:image" content="../../assets/brand/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="مهجه الصبحي">
+<meta name="description" content="أتمتة الأعمال من الصفر: من المهام المتكررة إلى سير عمل ذكي خطوة بخطوة. دليل عملي من أكاديمية رمـز.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body data-root="../../" data-article="automation-from-zero">
+<div class="wrap">
+  <header id="hdr"></header>
+  <nav class="crumbs"><a href="../../index.html">أكاديمية رمـز</a><span>/</span><a href="../index.html">المذكرات</a><span>/</span><b id="crumb"></b></nav>
+
+  <!-- ================= the article ================= -->
+  <section class="shape hero art-hero" data-pocket="tr">
+    <div class="hero-grid">
+      <div class="pocket hero-pocket" id="head"></div>
+      <div class="hero-art home-art on-dark" id="coverBox"></div>
+    </div>
+    <div class="hero-steps on-dark" id="steps"></div>
+  </section>
+
+  <!-- ================= about the article ================= -->
+  <section class="block art-about">
+    <div><span class="kicker"><i class="dot"></i>عن المذكرة</span><h2 class="h2">من أول سطر <span class="hl">إلى أول مشروع</span></h2></div>
+    <div id="about"></div>
+  </section>
+
+  <!-- ================= the parts ================= -->
+  <section class="block" id="parts">
+    <div class="sec-head"><div><span class="kicker"><i class="dot"></i>أجزاء المذكرة</span><h2 class="h2">ثلاثة أجزاء، <span class="hl">اقرأ أو تصفّح أو حمّل</span></h2></div></div>
+    <div id="partList" style="margin-top:28px"></div>
+  </section>
+
+  <footer id="ftr"></footer>
+</div>
+
+<script src="../../assets/organic.js"></script>
+<script src="../../assets/catalog.js"></script>
+<script src="../../assets/resume.js"></script>
+<script src="../../assets/site.js"></script>
+<script>
+  const slug = document.body.dataset.article, a = Site.C().memos.find((x) => x.slug === slug), R = Site.root(), first = Site.pub(a)[0];
+  Site.header(document.getElementById('hdr'), 'memos');
+  Site.footer(document.getElementById('ftr'));
+  document.getElementById('crumb').textContent = `${a.title} ${a.titleHl}`;
+  document.getElementById('head').innerHTML = `
+    <span class="chip"><i data-ic="book"></i>${a.kind}</span>
+    <h1><span>${a.title}</span><span class="hl">${a.titleHl}</span></h1>
+    <p class="lead">${a.sub}</p>
+    <div class="byline" style="margin-top:14px"><i data-ic="pen"></i>بقلم <b>${a.author}</b></div>
+    <div class="chips light" style="margin-top:16px"><span>${a.level}</span><span>${Site.partsWord(a.parts.length)}</span></div>
+    <div class="hero-cta">
+      ${first ? `<a class="btn ink" href="${R + first.read}">ابدأ القراءة<i data-ic="arrow"></i></a><a class="btn line" href="#parts">الأجزاء<i data-ic="layers"></i></a>` : ''}
+    </div>`;
+  document.getElementById('coverBox').innerHTML = Site.cover(a, first ? R + first.book : '#') +
+    `<div class="cover-note"><span class="k">${a.kind}</span><span class="t">${a.title} ${a.titleHl}</span><span class="s">بقلم ${a.author}</span></div>`;
+  document.getElementById('steps').innerHTML = a.steps.map(([t, s], i) => `<div class="step"><span class="ic"><i data-ic="${['search', 'nodes', 'play'][i] || 'arrow'}"></i></span><div class="t"><span class="num">${Site.pad(i + 1)}</span>${t}</div><div class="s">${s}</div></div>`).join('');
+  document.getElementById('about').innerHTML = a.about.map((p) => `<p>${p}</p>`).join('');
+  document.getElementById('partList').innerHTML = a.parts.map((p) => Site.partRow(a, p)).join('');
+  Site.ready();
+</script>
+</body>
+</html>

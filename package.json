@@ -1,0 +1,16 @@
+{
+  "name": "ramz-academy",
+  "private": true,
+  "description": "موقع أكاديمية رمـز",
+  "scripts": {
+    "check": "node tools/check-site.js",
+    "pdf": "node tools/build-pdf.js",
+    "share-card": "node tools/share-card.js",
+    "check-resume": "node tools/check-resume.js",
+    "check-highlights": "node tools/check-highlights.js",
+    "tour": "node tools/record-tour.js"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

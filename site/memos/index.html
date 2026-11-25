@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المذكرات — أكاديمية رمـز</title>
+<link rel="icon" type="image/png" href="../assets/brand/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#F2EFE8">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:site_name" content="أكاديمية رمـز">
+<meta property="og:title" content="المذكرات — أكاديمية رمـز">
+<meta property="og:description" content="مذكرات أكاديمية رمـز: أدلة عملية لتعلّم الأتمتة من الصفر.">
+<meta property="og:image" content="../assets/brand/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="مذكرات أكاديمية رمـز: أدلة عملية لتعلّم الأتمتة من الصفر.">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-root="../">
+<div class="wrap">
+  <header id="hdr"></header>
+
+  <nav class="crumbs"><a href="../index.html">أكاديمية رمـز</a><span>/</span><b>المذكرات</b></nav>
+  <section class="page-head">
+    <span class="kicker"><i class="dot"></i>المذكرات</span>
+    <h1>مذكرات <span class="hl">أكاديمية رمـز</span></h1>
+    <p class="lead">كل مذكرة دليل عملي يرافقك خطوة بخطوة، بأمثلة من تحدّيات بيئة العمل. اقرأها في الموقع، أو تصفّحها ككتاب، أو حمّلها PDF.</p>
+  </section>
+
+  <section id="list"></section>
+
+  <footer id="ftr"></footer>
+</div>
+
+<script src="../assets/organic.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/resume.js"></script>
+<script src="../assets/site.js"></script>
+<script>
+  Site.header(document.getElementById('hdr'), 'memos');
+  Site.footer(document.getElementById('ftr'));
+  document.getElementById('list').innerHTML = Site.C().memos.map(Site.memoRow).join('');
+  Site.ready();
+</script>
+</body>
+</html>

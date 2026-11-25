@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!-- RAMZ ACADEMY — the 1200×630 preview shown when the site's link is shared (render it with: node tools/share-card.js) -->
+<link rel="stylesheet" href="../site/assets/fonts/alan-sans.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; background: #F2EFE8; font-family: 'Alan Sans'; color: #141413; position: relative; overflow: hidden; }
+  svg.bg { position: absolute; inset: 0; }
+  .pk { position: absolute; right: 66px; top: 70px; width: 580px; text-align: right; }
+  .chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 12px; border-radius: 999px; background: #141413; color: #F2EFE8; font-size: 20px; font-weight: 800; line-height: 1; }
+  .chip i { width: 10px; height: 10px; border-radius: 50%; background: #FF5A1F; }
+  h1 { font-size: 76px; font-weight: 800; line-height: 1.24; margin-top: 22px; }
+  h1 span { display: block; white-space: nowrap; } h1 .hl { color: #FF5A1F; }
+  .mark { position: absolute; left: 130px; top: 140px; width: 240px; }
+  .foot { position: absolute; left: 90px; right: 90px; bottom: 56px; display: flex; gap: 46px; color: #F2EFE8; font-size: 26px; font-weight: 800; }
+  .foot span { display: flex; align-items: center; gap: 12px; }
+  .foot b { color: #FF5A1F; font-size: 20px; direction: ltr; }
+</style>
+</head>
+<body>
+<svg class="bg" width="1200" height="630"></svg>
+<img class="mark" src="../site/assets/brand/ramz-mark-orange.png" alt="">
+<div class="pk"><span class="chip"><i></i>مبادرة تعليمية من رمـز لأتمتة الأعمال</span><h1><span>أكاديمية رمـز</span><span class="hl">الأتمتة من الصفر</span></h1></div>
+<div class="foot"><span><b>01</b>اكتشف</span><span><b>02</b>صمّم</span><span><b>03</b>شغّل</span></div>
+<script src="../site/assets/organic.js"></script>
+<script>
+  // the dark shape hugging a paper pocket at the top right, as on the site's hero
+  const W = 1200, H = 630, m = 34, x = 500, y = 380;
+  const d = RamzOrganic.smoothPoly([[m, m, 120], [x, m, 100], [x, y, 80], [W - m, y, 90], [W - m, H - m, 110], [m, H - m, 130]], 0.4);
+  document.querySelector('svg.bg').innerHTML = `<defs><linearGradient id="g" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#262624"/><stop offset="1" stop-color="#141413"/></linearGradient></defs><path d="${d}" fill="url(#g)"/>`;
+  Promise.all([document.fonts.ready, new Promise((r) => { const i = document.querySelector('.mark'); i.complete ? r() : i.onload = r; })]).then(() => { document.body.dataset.ready = '1'; });
+</script>
+</body>
+</html>

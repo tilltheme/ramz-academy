@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>أتمتة الأعمال من الصفر · الجزء الأول — أكاديمية رمـز</title>
+<link rel="icon" type="image/png" href="../../../assets/brand/icon-512.png">
+<link rel="apple-touch-icon" href="../../../assets/brand/apple-touch-icon.png">
+<meta name="theme-color" content="#F2EFE8">
+<meta name="description" content="أكاديمية رمـز: مبادرة تعليمية من رمـز لأتمتة الأعمال.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:site_name" content="أكاديمية رمـز">
+<meta property="og:title" content="أتمتة الأعمال من الصفر · الجزء الأول — أكاديمية رمـز">
+<meta property="og:description" content="أكاديمية رمـز: مبادرة تعليمية من رمـز لأتمتة الأعمال.">
+<meta property="og:image" content="../../../assets/brand/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="مهجه الصبحي">
+<link rel="stylesheet" href="../../../assets/fonts/alan-sans.css">
+<style>
+  :root { --paper: #F2EFE8; --ink: #141413; --ink-2: #232321; --ink-3: #2E2E2B; --muted: #78746B; --paper-muted: rgba(242,239,232,.62); --paper-line: rgba(242,239,232,.14); --sand: #E5DFD3; --signal: #FF5A1F; --line: rgba(20,20,19,.12); --pw: 210mm; --ph: 297mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { font-family: 'Alan Sans'; color: var(--ink); -webkit-font-smoothing: antialiased; background: #1B1B1A; overflow: hidden; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+  .latin { direction: ltr; unicode-bidi: isolate; }
+  .hl { color: var(--signal); }
+  b, strong { font-weight: 800; }
+
+  /* ================= the page (one A4 sheet) ================= */
+  .page { width: var(--pw); height: var(--ph); position: relative; overflow: hidden; background: var(--paper); display: flex; flex-direction: column; padding: 40px 52px 34px; font-size: 14.6px; line-height: 1.85; font-weight: 450; direction: rtl; }
+  .run { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 800; color: var(--muted); }
+  .run img { width: 22px; display: block; }
+  .run-line { height: 2px; background: var(--line); margin-top: 12px; position: relative; }
+  .run-line::after { content: ""; position: absolute; right: 0; top: 0; width: 64px; height: 2px; background: var(--signal); }
+  .pbody { flex: 1; min-height: 0; overflow: hidden; margin-top: 26px; display: flex; flex-direction: column; }
+  .pfoot { display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--line); padding-top: 10px; margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--muted); }
+  .pfoot .pn { direction: ltr; font-size: 14px; font-weight: 900; color: var(--signal); }
+
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: var(--signal); line-height: 1.4; }
+  .kicker i.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); }
+  .kicker .latin { color: var(--muted); font-size: 11.5px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 7px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 12px; font-weight: 800; line-height: 1; }
+  .badge b { direction: ltr; color: var(--signal); font-weight: 900; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 9px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 800; line-height: 1; }
+  .chip svg { color: var(--signal); }
+  .head-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  h1, h2, h3, h4 { font-weight: 800; line-height: 1.25; }
+  .pbody h2 { font-size: 32px; margin-top: 10px; }
+  .pbody h3 { font-size: 20px; margin: 20px 0 6px; }
+  .pbody p { margin-bottom: 9px; color: #33322E; }
+  .lead { font-size: 16.5px; color: var(--muted); font-weight: 500; line-height: 1.7; }
+  .num { direction: ltr; font-weight: 900; color: var(--signal); line-height: 1; letter-spacing: -.02em; }
+
+  .tag-c { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px 8px 13px; border-radius: 999px; font-size: 12.5px; font-weight: 800; line-height: 1; background: var(--sand); color: var(--ink); margin: 12px 0 7px; align-self: flex-start; }
+  .tag-c svg { color: var(--signal); }
+  .tag-c.dark { background: var(--ink); color: var(--paper); }
+  .tag-c.out { background: transparent; box-shadow: inset 0 0 0 2px var(--signal); color: var(--signal); }
+  .card { border-radius: 20px; padding: 15px 18px 16px; }
+  .card.sand { background: var(--sand); }
+  .card.dark { background: var(--ink); color: var(--paper); }
+  .card.dark p { color: var(--paper-muted); }
+  .card.out { box-shadow: inset 0 0 0 2px var(--signal); }
+  .card.out-ink { box-shadow: inset 0 0 0 2px var(--line); }
+  .card h4 { font-size: 18px; margin-bottom: 5px; }
+  .card p:last-child { margin-bottom: 0; }
+  .defs { display: grid; gap: 7px; }
+  .def { display: grid; grid-template-columns: 172px 1fr; gap: 7px; }
+  .def .term { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 11px 14px; display: flex; flex-direction: column; justify-content: center; }
+  .def .term b { font-size: 15px; line-height: 1.4; }
+  .def .term .latin { font-size: 10.5px; font-weight: 700; color: var(--signal); line-height: 1.4; text-align: right; margin-top: 2px; }
+  .def .desc { background: var(--sand); border-radius: 16px; padding: 11px 15px; font-size: 13.8px; line-height: 1.7; display: flex; align-items: center; }
+  .tiles { display: grid; gap: 8px; margin: 10px 0; }
+  .tiles.c4 { grid-template-columns: repeat(4, 1fr); }
+  .tiles.c3 { grid-template-columns: repeat(3, 1fr); }
+  .tile { background: var(--sand); border-radius: 18px; padding: 13px 13px 14px; display: flex; flex-direction: column; gap: 8px; }
+  .tile .ic { width: 36px; height: 36px; border-radius: 12px; background: var(--ink); color: var(--signal); display: grid; place-items: center; }
+  .tile .tt { font-size: 14.5px; font-weight: 800; line-height: 1.35; }
+  .tile .ts { font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.45; margin-top: -4px; }
+  .tile.dark { background: var(--ink); color: var(--paper); }
+  .tile.dark .ic { background: var(--ink-3); }
+  .keyline { border-right: 4px solid var(--signal); padding: 3px 14px 3px 0; margin: 12px 0; font-size: 15.5px; line-height: 1.75; }
+  .lines { display: grid; gap: 0; }
+  .wline { border-bottom: 2px dashed rgba(20,20,19,.2); height: 34px; }
+  .box { width: 18px; height: 18px; border-radius: 6px; border: 2px solid rgba(20,20,19,.3); flex: none; display: inline-block; }
+  .circ { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(20,20,19,.3); flex: none; display: inline-block; }
+
+  /* the dark shape: painted as a background picture so it survives cloning and printing */
+  .shape { position: relative; background-repeat: no-repeat; background-size: 100% 100%; background-image: var(--bg); }
+  .on-dark { color: var(--paper); }
+
+  /* ---------- cover ---------- */
+  .page.cover { padding: 34px; }
+  .cov { flex: 1; display: flex; flex-direction: column; }
+  .cov-top { display: grid; grid-template-columns: 1.6fr 1fr; }
+  .cov-pk { padding: 8px 4px 30px 34px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .brandline { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; }
+  .brandline img { width: 34px; display: block; }
+  .cov-pk h1 { font-size: 66px; line-height: 1.2; margin-top: 6px; }
+  .cov-pk h1 span { display: block; white-space: nowrap; }
+  .cov-pk .lead { color: var(--ink); font-size: 18px; }
+  .byline { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--muted); }
+  .byline svg { color: var(--signal); }
+  .byline b { color: var(--ink); font-weight: 800; }
+  .cov-pk .meta { display: flex; gap: 16px; font-size: 13px; font-weight: 700; color: var(--muted); align-items: center; }
+  .cov-pk .meta i { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); display: inline-block; margin-left: 7px; }
+  .cov-mark { display: flex; align-items: flex-start; justify-content: flex-end; padding: 40px 40px 0 0; }
+  .cov-mark img { width: 118px; }
+  .cov-art { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 6px 40px 0; }
+  .cov-art img { width: 100%; display: block; }
+  .cov-art .tag { font-size: 30px; font-weight: 800; margin-top: 2px; }
+  .cov-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 18px 40px 34px; }
+  .cstep { border-top: 2px solid var(--paper-line); padding-top: 14px; }
+  .cstep .t { font-size: 21px; font-weight: 800; display: flex; align-items: baseline; gap: 9px; }
+  .cstep .t .num { font-size: 14px; }
+  .cstep .s { font-size: 13px; color: var(--paper-muted); font-weight: 600; margin-top: 2px; }
+  .cov-foot { display: flex; justify-content: space-between; padding: 0 40px 30px; font-size: 11.5px; font-weight: 700; color: var(--paper-muted); }
+
+  /* ---------- chapter opener / end / next ---------- */
+  .op { flex: 1; display: flex; flex-direction: column; }
+  .op-top { display: grid; grid-template-columns: 1.55fr 1fr; }
+  .op-pk { padding: 6px 4px 26px 30px; }
+  .op-pk h2 { font-size: 40px !important; margin-top: 10px; }
+  .op-pk .lead { color: var(--ink); margin-top: 8px; }
+  .op-num { padding: 34px 30px 0 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .op-num .num { font-size: 120px; line-height: .85; }
+  .op-num small { font-size: 12.5px; color: var(--paper-muted); font-weight: 700; margin-top: 8px; }
+  .op-body { padding: 18px 36px 0; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .op-list { list-style: none; }
+  .op-list li { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 700; padding: 8px 0; border-bottom: 1px solid var(--paper-line); }
+  .op-list li:last-child { border: 0; }
+  .op-list .num { font-size: 13px; width: 20px; }
+  .op-list .box { border-color: rgba(242,239,232,.35); }
+  .op-quote { background: var(--signal); color: var(--ink); border-radius: 20px; padding: 15px 20px 17px; font-size: 18px; font-weight: 800; line-height: 1.45; }
+  .op-quote small { display: block; font-size: 11.5px; opacity: .7; margin-bottom: 3px; }
+  .op-dom { margin-top: auto; padding: 0 0 26px; }
+  .op-dom img { width: 100%; display: block; }
+
+  /* five questions, Noura */
+  .qs { display: grid; gap: 7px; margin: 10px 0; }
+  .q { display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; background: var(--sand); border-radius: 16px; padding: 10px 14px 10px 12px; }
+  .q .num { font-size: 19px; text-align: center; }
+  .q .qt { font-size: 15px; font-weight: 800; line-height: 1.4; }
+  .q .qd { font-size: 12.5px; color: var(--muted); font-weight: 600; line-height: 1.5; }
+  .yn { display: flex; gap: 12px; font-size: 12.5px; font-weight: 800; color: var(--muted); }
+  .yn span { display: flex; align-items: center; gap: 5px; }
+  .checks { list-style: none; margin: 6px 0 4px; }
+  .checks li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13.6px; line-height: 1.6; }
+  .checks li:last-child { border: 0; }
+  .checks .ok { width: 24px; height: 24px; border-radius: 8px; background: var(--signal); color: var(--ink); display: grid; place-items: center; margin-top: 1px; }
+
+  /* chain */
+  .chain { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin: 12px 0; }
+  .link { position: relative; background: var(--sand); border-radius: 18px; padding: 13px 11px; display: flex; flex-direction: column; gap: 6px; }
+  .link::after { content: ""; position: absolute; left: -13px; top: 50%; width: 10px; height: 2px; background: var(--signal); }
+  .link:last-child::after { display: none; }
+  .link.first { background: var(--ink); color: var(--paper); }
+  .link .ic { width: 34px; height: 34px; border-radius: 11px; background: var(--ink); color: var(--signal); display: grid; place-items: center; }
+  .link.first .ic { background: var(--signal); color: var(--ink); }
+  .link .num { font-size: 12px; }
+  .link .tt { font-size: 15px; font-weight: 800; }
+  .link .ts { font-size: 11.5px; color: var(--muted); font-weight: 600; line-height: 1.4; }
+  .link.first .ts { color: var(--paper-muted); }
+
+  .tech { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--ink); color: var(--paper); border-radius: 24px; overflow: hidden; }
+  .tech .st { padding: 18px 18px 16px 12px; }
+  .tech h4 { font-size: 19px; }
+  .tech .intro { font-size: 13px; color: var(--paper-muted); line-height: 1.7; margin-top: 4px; }
+  .tsteps { list-style: none; margin-top: 8px; display: grid; gap: 4px; }
+  .tsteps li { display: grid; grid-template-columns: 26px 1fr; gap: 6px; font-size: 13px; line-height: 1.6; color: var(--paper-muted); padding: 5px 0; border-bottom: 1px solid var(--paper-line); }
+  .tsteps li:last-child { border: 0; }
+  .tsteps li b { color: var(--paper); }
+  .tsteps .num { font-size: 13px; padding-top: 3px; }
+  .tech .fl { background: var(--ink-2); padding: 14px 12px; display: flex; flex-direction: column; justify-content: center; }
+  .tech .fl svg { width: 100%; height: auto; display: block; }
+  .tech .fl svg text { font-family: 'Alan Sans'; font-weight: 800; }
+
+  .symbols { display: grid; gap: 6px; margin: 10px 0; }
+  .sym { display: grid; grid-template-columns: 120px 140px 1fr; align-items: center; gap: 14px; background: var(--sand); border-radius: 16px; padding: 9px 16px; }
+  .sym.head { background: var(--ink); color: var(--paper); font-size: 12.5px; font-weight: 800; padding: 10px 16px; }
+  .sym .nm { font-size: 15px; font-weight: 800; }
+  .sym svg { width: 120px; height: 46px; display: block; }
+  .sym .mn { font-size: 14px; font-weight: 700; line-height: 1.5; }
+  .sym .mn .latin { color: var(--muted); font-size: 11.5px; display: block; text-align: right; }
+
+  .lens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+  .lens > div { background: var(--paper); border-radius: 15px; padding: 11px 13px; }
+  .lens .lt { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 800; }
+  .lens .lt i { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); }
+  .lens p { font-size: 13px !important; margin: 4px 0 0 !important; line-height: 1.55; }
+  .ia { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 7px; margin: 12px 0 6px; align-items: stretch; }
+  .ia .bx { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 11px 13px; font-size: 13.5px; font-weight: 700; line-height: 1.45; }
+  .ia .bx small { display: block; font-size: 10.5px; color: var(--signal); font-weight: 800; }
+  .ia .bx.mid { background: var(--signal); color: var(--ink); }
+  .ia .bx.mid small { color: var(--ink); opacity: .7; }
+  .ia .ar { display: grid; place-items: center; color: var(--signal); }
+
+  .recap { padding: 14px 32px 30px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .recap .rh { font-size: 13.5px; font-weight: 800; color: var(--paper-muted); margin-bottom: 7px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .pills span { padding: 8px 12px 9px; border-radius: 13px; background: var(--ink-3); color: var(--paper); font-size: 13.5px; font-weight: 700; line-height: 1.2; }
+  .pills span.s { background: var(--signal); color: var(--ink); font-weight: 800; }
+  .pills svg { color: var(--signal); }
+  .recap .defl { background: var(--ink-3); border-radius: 16px; padding: 13px 16px; color: var(--paper); font-size: 14.5px; line-height: 1.7; }
+  .recap .defl b { color: var(--signal); }
+
+  .quiz { display: grid; gap: 9px; margin-top: 12px; }
+  .qq { background: var(--sand); border-radius: 18px; padding: 12px 16px 13px; }
+  .qq .qh { display: grid; grid-template-columns: 30px 1fr; gap: 6px; font-size: 14px; font-weight: 700; line-height: 1.6; }
+  .qq .qh .num { font-size: 16px; padding-top: 3px; }
+  .qq .opts { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-right: 36px; margin-top: 6px; font-size: 13.5px; font-weight: 600; }
+  .qq .opts span { display: inline-flex; align-items: center; gap: 6px; }
+  .qq .opts b { color: var(--signal); }
+  .task { box-shadow: inset 0 0 0 2px var(--line); border-radius: 20px; padding: 14px 18px 16px; margin-top: 10px; }
+  .task .th { display: flex; align-items: center; gap: 9px; font-size: 16px; font-weight: 800; }
+  .task .tp { font-size: 13px; color: var(--muted); font-weight: 600; margin-top: 4px; }
+  .task .row { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: end; font-size: 13.5px; font-weight: 700; }
+  .task .row .wline { height: 30px; }
+  .ticks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin-top: 9px; }
+  .ticks span { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; background: var(--sand); border-radius: 12px; padding: 8px 11px; }
+  .key { display: grid; gap: 8px; margin-top: 12px; }
+  .key > div { display: grid; grid-template-columns: 30px 1fr; gap: 8px; background: var(--sand); border-radius: 16px; padding: 11px 15px; }
+  .key .num { font-size: 16px; padding-top: 3px; }
+  .key b { display: block; font-size: 14.5px; }
+  .key p { font-size: 13.5px !important; margin: 2px 0 0 !important; line-height: 1.6; }
+
+  .ab { border-radius: 22px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+  .ab.dark { background: var(--ink); color: var(--paper); }
+  .ab.dark p { color: var(--paper-muted) !important; }
+  .ab.sand { background: var(--sand); }
+  .ab .lg { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 800; }
+  .ab .lg img { width: 38px; }
+  .ab .lg small { display: block; font-size: 12px; color: var(--muted); }
+
+  .stages { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 16px; }
+  .stages.s3 .stage.dark { grid-column: 1 / -1; }
+  .stage { background: var(--sand); border-radius: 20px; padding: 15px 16px 16px; }
+  .stage .num { font-size: 28px; }
+  .stage h3 { font-size: 17px !important; margin: 8px 0 0 !important; }
+  .stage h3 small { display: block; font-size: 13px; color: var(--muted); }
+  .stage p { font-size: 12.8px !important; line-height: 1.7; margin: 6px 0 0 !important; }
+  .stage.dark { background: var(--ink); color: var(--paper); }
+  .stage.dark p, .stage.dark h3 small { color: var(--paper-muted) !important; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; align-items: center; }
+  .legend .tag-c { margin: 0; }
+
+  .toc { display: grid; gap: 6px; margin-top: 18px; }
+  .toc a { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 16px; background: var(--sand); font-size: 15.5px; font-weight: 700; }
+  .toc a .num { font-size: 18px; color: var(--muted); text-align: center; }
+  .toc a .st { font-size: 11.5px; font-weight: 800; color: var(--muted); }
+  .toc a.open { background: var(--ink); color: var(--paper); }
+  .toc a.open .num { color: var(--signal); }
+  .toc a.open .st { color: var(--signal); }
+
+  .back { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; gap: 22px; }
+  .back img.m { width: 120px; }
+  .back .bq { font-size: 28px; font-weight: 800; line-height: 1.45; max-width: 520px; }
+  .back .bn { font-size: 20px; font-weight: 800; }
+  .back .bs { font-size: 13px; color: var(--paper-muted); font-weight: 700; }
+
+  /* ================= the reader (screen) ================= */
+  #store { position: fixed; inset: 0; overflow: hidden; visibility: hidden; pointer-events: none; z-index: -1; }
+  .app { height: 100%; display: flex; flex-direction: column; }
+  .bar { height: 64px; flex: none; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 20px; color: var(--paper); }
+  .bar .brand { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 800; white-space: nowrap; }
+  .bar .brand img { width: 30px; display: block; }
+  .bar .brand small { font-size: 13px; color: var(--paper-muted); font-weight: 700; margin-right: 6px; }
+  .bar .act { display: flex; align-items: center; gap: 8px; }
+  .bbtn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px 11px; border-radius: 999px; font-size: 14px; font-weight: 800; line-height: 1; background: rgba(242,239,232,.08); color: var(--paper); white-space: nowrap; }
+  .bbtn svg { color: var(--signal); }
+  .bbtn.signal { background: var(--signal); color: var(--ink); }
+  .bbtn.signal svg { color: var(--ink); }
+  .bbtn:hover { background: rgba(242,239,232,.14); }
+  .bbtn.signal:hover { background: #FF7A45; }
+  .stage-wrap { flex: 1; min-height: 0; position: relative; display: grid; place-items: center; overflow: hidden; }
+  .scaler { position: absolute; left: 50%; top: calc(50% - 12px); transform-origin: 0 0; }
+  .book { position: relative; perspective: 3200px; transition: transform .7s cubic-bezier(.3,.1,.2,1); }
+  .slot { position: absolute; top: 0; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
+  .slot:empty { box-shadow: none; }
+  .book.two .slot.r::before, .book.two .slot.l::after { content: ""; position: absolute; top: 0; bottom: 0; width: 46px; z-index: 3; pointer-events: none; }
+  .book.two .slot.r::before { left: 0; background: linear-gradient(90deg, rgba(0,0,0,.16), transparent); }
+  .book.two .slot.l::after { right: 0; background: linear-gradient(270deg, rgba(0,0,0,.18), transparent); }
+  .leaf { position: absolute; top: 0; transform-style: preserve-3d; z-index: 5; display: none; }
+  .leaf .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; background: var(--paper); }
+  .leaf .face.back { transform: rotateY(180deg); }
+  .leaf .shade { position: absolute; inset: 0; pointer-events: none; z-index: 4; opacity: 0; }
+  .leaf.go .shade { animation: shade var(--dur) ease-in-out; }
+  .leaf .face.front .shade { background: linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,0) 60%); }
+  .leaf .face.back .shade { background: linear-gradient(270deg, rgba(0,0,0,.28), rgba(0,0,0,0) 60%); }
+  @keyframes shade { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+  .nav { height: 70px; flex: none; display: flex; align-items: center; justify-content: center; gap: 16px; color: var(--paper); }
+  .nav .rd { width: 46px; height: 46px; border-radius: 50%; background: rgba(242,239,232,.08); display: grid; place-items: center; }
+  .nav .rd svg { color: var(--signal); }
+  .nav .rd:disabled { opacity: .3; cursor: default; }
+  .nav .rd.prev svg { transform: rotate(180deg); }
+  .nav .count { font-size: 14px; font-weight: 800; min-width: 150px; text-align: center; color: var(--paper-muted); }
+  .nav .count b { color: var(--paper); }
+  .nav input[type=range] { width: min(300px, 30vw); accent-color: var(--signal); direction: rtl; }
+  .hint { position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font-size: 12px; color: rgba(242,239,232,.38); font-weight: 700; pointer-events: none; }
+  @media (max-width: 700px) {
+    .bar .brand small, .bbtn .t-long, .nav input[type=range], .hint { display: none; }
+    .bar { padding: 0 12px; }
+  }
+
+  /* ================= print / save as PDF: just the sheets ================= */
+  @page { size: 210mm 297mm; margin: 0; }
+  @media print {
+    html, body { height: auto; overflow: visible; background: none; }
+    .app { display: none !important; }
+    #store { position: static; overflow: visible; visibility: visible; }
+    #store .page { break-after: page; page-break-after: always; }
+    .shape { background-image: var(--bg-print); }
+    #store .page:last-child { break-after: auto; page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= the reader ================= -->
+<div class="app" id="app">
+  <header class="bar">
+    <a class="brand" href="../../../index.html"><img src="../../../assets/brand/ramz-mark-orange.png" alt="رمـز">أكاديمية رمـز<small>أتمتة الأعمال من الصفر · الجزء الأول</small></a>
+    <div class="act">
+      <a class="bbtn" href="../index.html"><i data-ic="home"></i><span class="t-long">صفحة المذكرة</span></a><a class="bbtn" href="index.html"><i data-ic="book"></i><span class="t-long">اقرأ في الموقع</span></a>
+      <a class="bbtn" href="automation-from-zero-part-1.pdf" download><i data-ic="down"></i><span class="t-long">حمّل</span> PDF</a>
+      <button class="bbtn" id="hlBtn"><i data-ic="pen"></i><span class="t-long">تظليلاتي</span><b id="hlCount" style="background:var(--signal);color:var(--ink);border-radius:999px;padding:3px 8px 4px;font-size:12px;display:none"></b></button>
+      <button class="bbtn" id="saveBtn"><i data-ic="bookmark"></i><span class="t-long">احفظ مكاني</span></button>
+      <button class="bbtn signal" id="print"><i data-ic="print"></i>اطبع<span class="t-long"> / احفظ PDF</span></button>
+    </div>
+  </header>
+  <div class="stage-wrap" id="stageWrap">
+    <div class="scaler" id="scaler">
+      <div class="book" id="book">
+        <div class="slot r" id="slotR"></div>
+        <div class="slot l" id="slotL"></div>
+        <div class="leaf" id="leaf"><div class="face front"></div><div class="face back"></div></div>
+      </div>
+    </div>
+    <div class="hint">اضغط على الصفحة اليسرى أو اسحبها لتقلب · الأسهم في لوحة المفاتيح تشتغل بعد</div>
+  </div>
+  <nav class="nav">
+    <button class="rd prev" id="prev" aria-label="الصفحة السابقة"><i data-ic="arrow"></i></button>
+    <span class="count" id="count"></span>
+    <input type="range" id="jump" min="0" value="0" aria-label="انتقل إلى صفحة">
+    <button class="rd next" id="next" aria-label="الصفحة التالية"><i data-ic="arrow"></i></button>
+  </nav>
+</div>
+
+<!-- ================= the sheets (one source for the book and for print) ================= -->
+<div id="store">
+
+  <!-- 1 · cover -->
+  <section class="page cover" data-bare>
+    <div class="shape cov" data-pocket="tr">
+      <div class="cov-top">
+        <div class="pocket cov-pk">
+          <div class="brandline"><img src="../../../assets/brand/ramz-mark-orange.png" alt="رمـز">أكاديمية رمـز</div>
+          <span class="chip"><i data-ic="book"></i>الدليل العملي</span>
+          <h1><span>أتمتة الأعمال</span><span class="hl">من الصفر</span></h1>
+          <p class="lead">من المهام المتكررة إلى <b>سير عمل ذكي</b><br>خطوة بخطوة</p>
+          <div class="byline" style="font-size:16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5zM13.5 7l3 3"/></svg>بقلم <b>مهجه الصبحي</b></div>
+          <div class="meta"><span><i></i>مستوى تأسيسي</span><span>الجزء الأول</span><span>الإصدار الأول</span></div>
+        </div>
+        <div class="cov-mark"><img src="../../../assets/brand/ramz-mark-orange.png" alt=""></div>
+      </div>
+      <div class="cov-art on-dark"><img data-dom="1" data-vb="600 330" alt=""><div class="tag">حركة واحدة <span class="hl">تختصر الطريق</span></div></div>
+      <div class="cov-steps on-dark">
+        <div class="cstep"><div class="t"><span class="num">01</span>اكتشف</div><div class="s">المهام القابلة للأتمتة</div></div>
+        <div class="cstep"><div class="t"><span class="num">02</span>صمّم</div><div class="s">سير العمل بكفاءة</div></div>
+        <div class="cstep"><div class="t"><span class="num">03</span>شغّل</div><div class="s">نفّذ أول أتمتة لك</div></div>
+      </div>
+      <div class="cov-foot"><span>أكاديمية رمـز / الإصدار الأول</span><span>أتمتة الأعمال من الصفر</span></div>
+    </div>
+  </section>
+
+  <!-- 2 · dedication -->
+  <section class="page" data-sec="إهداء من أكاديمية رمـز">
+    <span class="kicker"><i class="dot"></i>إهداء من أكاديمية رمـز</span>
+    <h2>بسم الله الرحمن الرحيم،<br>والحمد لله رب العالمين.</h2>
+    <p style="margin-top:14px">إلى عقول تتساءل وسط صخب التقنية: «ما الذي يستحق أن أتعلمه، وكيف أصنع به أثرًا؟» وإلى طاقات تبحث بين ركام المصادر عن مسارٍ نقيّ وواضح.. هذه الصفحات خُلقت لأجلك.</p>
+    <p><strong>نهديك هذه المذكرة من أكاديمية رمـز لنختصر عليك زمن التشتت، ونمنحك مساحة أوسع للفهم بعمق والتطبيق بثقة. جمعنا لك فيها <span class="hl">زبدة المعرفة من أول سطر إلى أول مشروع عملي.</span></strong></p>
+    <p>تبدأ معك من نواة الفكرة، وتمضي بك إلى أمثلة واقعية وتمارين مصمّمة بدقّة، إلى أن تبني مشروعك، وترى إلى أي مدى يأخذك في ابتكار مسارك الخاص.</p>
+    <p>ستجد هذه المذكرة مرآة تعيد لك صفاء الفكرة ومفاتيح الأدوات للتنفيذ بإتقان، <strong>لتكون <span class="hl">أكاديمية رمـز</span> رفيقك الموثوق في عوالم التعلّم والتقنية.</strong></p>
+    <div class="shape" data-pocket="none" style="margin-top:auto;padding:34px 30px 32px;display:flex;align-items:center;gap:22px">
+      <img src="../../../assets/brand/ramz-mark-orange.png" alt="" style="width:74px;flex:none">
+      <div class="on-dark"><div style="font-size:13px;font-weight:800;color:var(--signal)">أكاديمية رمـز</div><div style="font-size:24px;font-weight:800;line-height:1.45;margin-top:4px">رفيقك الموثوق في عوالم <span class="hl">التعلّم والتقنية.</span></div></div>
+    </div>
+  </section>
+
+  <!-- 3 · about -->
+  <section class="page" data-sec="من نحن">
+    <span class="kicker"><i class="dot"></i>من نحن</span>
+    <h2>من يقف خلف <span class="hl">هذه المذكرة؟</span></h2>
+    <div class="ab dark" style="margin-top:20px">
+      <div class="lg"><img src="../../../assets/brand/ramz-mark-orange.png" alt="">عن أكاديمية رمـز</div>
+      <p>أكاديمية رمـز مبادرة تعليمية من رمـز لأتمتة الأعمال. نستمدّ أمثلتنا من تحدّيات بيئة العمل، ونبني عليها أعمال وتجارب تعليمية في الأتمتة والذكاء الاصطناعي. في كل مذكرة، نضع بين يديك ما تحتاجه لتختبرها بنفسك وتطوّر بها حلًّا من واقع دراستك أو عملك.</p>
+    </div>
+    <div class="ab sand" style="margin-top:12px">
+      <div class="lg"><img src="../../../assets/brand/ramz-mark-orange.png" alt="">عن رمـز لأتمتة الأعمال</div>
+      <p>رمـز لأتمتة الأعمال شركة تقنية متخصصة في تطوير حلول الأتمتة والذكاء الاصطناعي. تعمل مع الشركات على تبسيط إجراءاتها وتحسين كفاءة عملياتها، من تحليل احتياجاتها وتصميم الحلول المناسبة إلى تنفيذها وتشغيلها.</p>
+    </div>
+  </section>
+
+  <!-- 4 · learning guide -->
+  <section class="page" data-sec="دليل التعلّم">
+    <span class="kicker"><i class="dot"></i>دليل التعلّم</span>
+    <h2>كيف تحقق الاستفادة القصوى <span class="hl">من المذكرة؟</span></h2>
+    <p class="lead" style="margin-top:8px">صممنا هذه المذكرة لتكون رفيقًا يرافقك خطوة بخطوة، ورسمنا لك مسارًا واضحًا من البداية حتى الإنجاز.</p>
+    <div class="stages s3">
+      <div class="stage"><div class="num">01</div><h3>قبل القراءة<small>اكتشف طريقك</small></h3><p>تبدأ رحلتك بخريطة طريق تمنحك تصورًا شاملًا لما ستتعلمه، وكيف ترتبط الموضوعات ببعضها. مع بداية كل فصل، ستجد عبارة اخترناها لتلهمك، تليها قائمة بالموضوعات والمهارات التي ستكتسبها.</p></div>
+      <div class="stage"><div class="num">02</div><h3>أثناء القراءة<small>افهم وجرّب</small></h3><p>ستجد المذكرة مقسمة إلى فصول وكل فصل مقسم إلى عناوين واضحة، يحتوي الفصل على بطاقات معرفية، ورسوم توضيحية، وأمثلة من واقعك تساعدك على تثبيت ما تعلمته قبل الانتقال إلى الفكرة التالية.</p></div>
+      <div class="stage dark"><div class="num">03</div><h3>الانطلاق<small>مشروع المذكرة</small></h3><p>بعد إكمال الفصول، يحين وقت تحويل المعرفة إلى إنجاز حقيقي. في القسم العملي، ستعمل على مشروع نهائي يجمع المهارات التي اكتسبتها، بخطوات واضحة تقودك من الفكرة إلى التنفيذ.</p></div>
+    </div>
+    <p style="margin-top:14px;font-weight:800;font-size:13.5px;color:var(--muted)">الرموز ثابتة تساعدك على التمييز بين أنواع المعلومات:</p>
+    <div class="legend">
+      <span class="tag-c out"><i data-ic="alert"></i>تنبيه</span><span class="tag-c dark"><i data-ic="bulb"></i>نصيحة</span><span class="tag-c"><i data-ic="book"></i>مفهوم</span><span class="tag-c"><i data-ic="life"></i>مثال من الحياة</span><span class="tag-c dark"><i data-ic="code"></i>مثال تقني</span><span class="tag-c"><i data-ic="clock"></i>لمحة تاريخية</span>
+    </div>
+    <p style="margin-top:auto;font-size:21px;font-weight:800;color:var(--ink)">هنا لا تكتفي بما تعلمته… <span class="hl">بل اصنع طريقك وابتكر.</span></p>
+  </section>
+
+  <!-- 5 · map -->
+  <section class="page" data-sec="خريطة التعلّم">
+    <span class="kicker"><i class="dot"></i>خريطة التعلّم</span>
+    <h2>رحلتك في <span class="hl">ثلاثة أجزاء</span></h2>
+    <p class="lead">أجزاء المذكرة</p>
+    <div class="toc" id="tocList"></div>
+  </section>
+
+  <!-- 6 · chapter one opener -->
+  <section class="page" data-sec="الفصل الأول">
+    <div class="shape op" data-pocket="tr">
+      <div class="op-top">
+        <div class="pocket op-pk">
+          <span class="badge"><b>01</b>الفصل الأول</span>
+          <h2>من المهمة المتكررة <span class="hl">إلى الأتمتة</span></h2>
+          <p class="lead">الأتمتة بلغة الناس. تابع طلبًا واحدًا من لحظة وصوله إلى ظهور نتيجته.</p>
+          <div class="byline" style="margin-top:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5zM13.5 7l3 3"/></svg>بقلم <b>مهجه الصبحي</b></div>
+        </div>
+        <div class="op-num on-dark"><span class="num">01</span><small>الفصل الأول</small></div>
+      </div>
+      <div class="op-body on-dark">
+        <ol class="op-list">
+          <li><span class="num">01</span>مقدمة في أتمتة الأعمال</li>
+          <li><span class="num">02</span>المهام المتكررة وفرص الأتمتة</li>
+          <li><span class="num">03</span>مكونات سير العمل</li>
+          <li><span class="num">04</span>أنواع الأتمتة</li>
+          <li><span class="num">05</span>الفرق بين الأتمتة والذكاء الاصطناعي</li>
+        </ol>
+        <div class="op-quote"><small>عبارة الفصل</small>لا تنتظر أن تتغير الأشياء من حولك، كن أنت القطعة التي تبدأ التغيير.</div>
+        <div class="op-dom"><img data-dom="1" data-vb="600 210" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · topic 1 -->
+  <section class="page" data-sec="الفصل الأول / 01">
+    <div class="head-row"><span class="badge"><b>01</b>من 05</span><span class="kicker">مقدمة في أتمتة الأعمال <span class="latin">Introduction to Business Process Automation</span></span></div>
+    <h2>من العمل اليدوي إلى <span class="hl">الأنظمة الذكية</span></h2>
+    <p style="margin-top:6px">بدأت رحلة العمل بجهد الإنسان، ثم جاءت الآلات لتختصر الوقت، وتبعتها الحواسيب لتنظّم البيانات وتُسرّع الإنجاز. ومع كل تطور، أصبح إنجاز المهام أسهل وأسرع، حتى وصلت التقنية إلى مرحلة لم تعد فيها تكتفي بمساعدتنا، بل أصبحت قادرة على تنفيذ المهام المتكررة تلقائيًا.</p>
+    <p>ومن هنا بدأت رحلة الأتمتة؛ <strong>حين انتقل دور التقنية من تسهيل العمل إلى إنجاز خطواته نيابةً عن الإنسان.</strong></p>
+    <h3>هل نحتاج الأتمتة؟</h3>
+    <p>في عالم الأعمال تعتمد المؤسسات على مجموعة من العمليات اليومية، مثل تسجيل البيانات، ومعالجة الطلبات، وإعداد التقارير، وإرسال الإشعارات. ومع تزايد حجم العمل، تتحول هذه المهام البسيطة إلى تحديات تستهلك الوقت، وتزيد احتمالية الأخطاء، وتُبطئ الإنجاز.</p>
+    <p>ومن هنا ظهرت الحاجة إلى <strong>الأتمتة</strong>؛ لإنجاز المهام المتكررة بكفاءة أعلى، ووقت أقل، ودقة أكبر، وإتاحة المجال للإنسان للتركيز على ما يستحق تفكيره وإبداعه.</p>
+    <span class="tag-c"><i data-ic="book"></i>مفهوم</span>
+    <div class="defs">
+      <div class="def"><div class="term"><b>الأتمتة</b><span class="latin">Automation</span></div><div class="desc">هي استخدام التقنيات والأنظمة لتنفيذ مهام أو عمليات محددة تلقائيًا، مع تقليل الحاجة إلى التدخل البشري المباشر.</div></div>
+      <div class="def"><div class="term"><b>أتمتة الأعمال</b><span class="latin">Business Process Automation (BPA)</span></div><div class="desc">هي تطبيق الأتمتة على العمليات والإجراءات داخل المؤسسات، بهدف تحسين كفاءة العمل وتسريع إنجازه وتقليل الأخطاء.</div></div>
+    </div>
+  </section>
+
+  <!-- 9 · topic 1 (cont.) -->
+  <section class="page" data-sec="الفصل الأول / 01">
+    <h3 style="margin-top:0">لماذا نستخدم الأتمتة؟</h3>
+    <p>الفكرة باختصار: بدل أن تنفّذ الخطوات المتكررة بنفسك كل مرة، تُعدّ النظام لينفّذها عنك. <strong>وهذا يساعد على:</strong></p>
+    <div class="tiles c4">
+      <div class="tile"><span class="ic"><i data-ic="clock"></i></span><span class="tt">تسريع الإنجاز</span></div>
+      <div class="tile"><span class="ic"><i data-ic="check"></i></span><span class="tt">تقليل الأخطاء</span></div>
+      <div class="tile"><span class="ic"><i data-ic="shuffle"></i></span><span class="tt">توحيد الإجراءات</span></div>
+      <div class="tile"><span class="ic"><i data-ic="box"></i></span><span class="tt">رفع الإنتاجية</span></div>
+    </div>
+    <div class="keyline"><strong>الفكرة الأساسية:</strong> الأتمتة لا تعني إلغاء دور الإنسان، بل تقليل انشغاله بالخطوات المتكررة ليتمكن من التركيز على ما هو أهم.</div>
+    <span class="tag-c"><i data-ic="life"></i>مثال من الحياة</span>
+    <div class="card out-ink"><p>عندما تصلك رسالة تأكيد بعد إتمام طلب من متجر إلكتروني، أو تذكير تلقائي بموعدك، أو فاتورة تُصدر بعد عملية شراء؛ فهذه أمثلة على إجراءات يمكن تنفيذها بالأتمتة.</p></div>
+    <div class="shape" data-pocket="none" style="margin-top:auto;padding:28px 30px 30px">
+      <div class="on-dark" style="font-size:12.5px;font-weight:800;color:var(--signal)">من المذكرة</div>
+      <div class="on-dark" style="font-size:25px;font-weight:800;line-height:1.45;margin-top:6px">«بدل أن تنفّذ الخطوات المتكررة بنفسك كل مرة، <span class="hl">تُعدّ النظام لينفّذها عنك.</span>»</div>
+    </div>
+  </section>
+
+  <!-- 10 · topic 2 -->
+  <section class="page" data-sec="الفصل الأول / 02">
+    <div class="head-row"><span class="badge"><b>02</b>من 05</span><span class="kicker">المهام المتكررة وفرص الأتمتة</span></div>
+    <h2>هل كل مهمة متكررة <span class="hl">تستحق الأتمتة؟</span></h2>
+    <p style="margin-top:6px">مو كل مهمة تتكرر تحتاج أتمتة! قبل أن تقرر، <strong>اسأل نفسك خمسة أسئلة:</strong></p>
+    <div class="qs">
+      <div class="q"><span class="num">01</span><div><div class="qt">هل تتكرر كثيرًا؟</div><div class="qd">هل تنفّذ المهمة بشكل يومي أو متكرر، وتستهلك جزءًا من وقتك؟</div></div></div>
+      <div class="q"><span class="num">02</span><div><div class="qt">هل خطواتها واضحة؟</div><div class="qd">هل تستطيع تحديد خطوات تنفيذها من البداية إلى النهاية؟</div></div></div>
+      <div class="q"><span class="num">03</span><div><div class="qt">هل بياناتها متاحة؟</div><div class="qd">هل تتوفر المعلومات التي يحتاجها النظام لتنفيذ المهمة؟</div></div></div>
+      <div class="q"><span class="num">04</span><div><div class="qt">هل يمكن تنفيذها دون تدخلك في كل مرة؟</div><div class="qd">هل تعتمد على قواعد واضحة، أم تحتاج إلى حكم بشري في كل خطوة؟</div></div></div>
+      <div class="q"><span class="num">05</span><div><div class="qt">هل تستحق الأتمتة؟</div><div class="qd">هل الوقت والجهد اللذان ستوفرهما يبرران تكلفة إعدادها وصيانتها؟</div></div></div>
+    </div>
+    <div class="card dark" style="background:var(--signal);color:var(--ink)"><h4>حان وقت القرار!</h4><p style="color:var(--ink)">إذا كانت معظم الإجابات «نعم»، فهذه فرصة تستحق دراسة الأتمتة.</p></div>
+    <span class="tag-c dark"><i data-ic="bulb"></i>نصيحة</span>
+    <div class="card dark"><p>بعض المهام تحتاج إلى أتمتة جزئية فقط، فليس الهدف أتمتة كل شيء، بل أتمتة ما يستحق.</p></div>
+  </section>
+
+  <!-- 11 · topic 2 (cont.) -->
+  <section class="page" data-sec="الفصل الأول / 02">
+    <span class="tag-c" style="margin-top:0"><i data-ic="life"></i>مثال من الحياة</span>
+    <div class="card sand">
+      <h4>هذه نورة تعيد نفس الشغلة كل يوم!</h4>
+      <p>تعمل نورة منسقةً للورش التدريبية في أكاديمية تعليمية. تستقبل يوميًا عشرات طلبات التسجيل، وتراجع بيانات كل مشارك، ثم تنقلها إلى جدول التسجيل وترسل رسالة تأكيد.</p>
+      <p><strong>ومع كل طلب جديد… تبدأ نورة الخطوات نفسها من جديد!</strong></p>
+      <ul class="checks">
+        <li><span class="ok"><i data-ic="check"></i></span><span><strong>هل تتكرر كثيرًا؟</strong> تراجع نورة عشرات طلبات التسجيل يوميًا، وتكرر الإجراءات نفسها مع كل طلب.</span></li>
+        <li><span class="ok"><i data-ic="check"></i></span><span><strong>هل خطواتها واضحة؟</strong> مراجعة البيانات، وتسجيل المشارك، وإرسال رسالة التأكيد.</span></li>
+        <li><span class="ok"><i data-ic="check"></i></span><span><strong>هل بياناتها متاحة؟</strong> يجمع نموذج التسجيل اسم المشارك وبريده الإلكتروني والبيانات اللازمة.</span></li>
+        <li><span class="ok"><i data-ic="check"></i></span><span><strong>هل يمكن تنفيذها دون تدخل في كل مرة؟</strong> يمكن معالجة الطلبات المكتملة وتحويل التي تحتاج مراجعة.</span></li>
+        <li><span class="ok"><i data-ic="check"></i></span><span><strong>هل تستحق الأتمتة؟</strong> نورة ترى منها فرصة لتوفير الوقت وتقليل الأخطاء ومتأكدة من جدواها.</span></li>
+      </ul>
+      <p style="font-weight:800;color:var(--ink)">النتيجة: <span class="hl">اكتشفنا فرصة للأتمتة!</span> تبيّن أن تسجيل المشاركين مرشح مناسب للأتمتة.</p>
+    </div>
+    <h3>كيف نحدد فرص الأتمتة؟</h3>
+    <div class="tiles c4">
+      <div class="tile dark"><span class="ic"><i data-ic="repeat"></i></span><span class="tt">التكرار</span></div>
+      <div class="tile dark"><span class="ic"><i data-ic="nodes"></i></span><span class="tt">وضوح الخطوات</span></div>
+      <div class="tile dark"><span class="ic"><i data-ic="db"></i></span><span class="tt">توفر البيانات</span></div>
+      <div class="tile dark"><span class="ic"><i data-ic="chart"></i></span><span class="tt">الجدوى</span></div>
+    </div>
+    <p>لا تقتصر الأتمتة على المهام الفردية؛ بل تمتد إلى مختلف أقسام المنشآت، مثل الموارد البشرية والمالية والمبيعات وخدمة العملاء، حيث تُستخدم لتنفيذ العمليات المتكررة، وتقليل الأخطاء، وتسريع الإنجاز، ورفع كفاءة العمل.</p>
+    <p>بعد تحديد المهام المناسبة للأتمتة، حان الوقت للتعرّف على مكونات سير العمل وكيف تتكامل لتنفيذها تلقائيًا.</p>
+  </section>
+
+  <!-- 12 · topic 3 -->
+  <section class="page" data-sec="الفصل الأول / 03">
+    <div class="head-row"><span class="badge"><b>03</b>من 05</span><span class="kicker">مكونات سير العمل</span></div>
+    <h2>خمس قطع <span class="hl">تحرّك الشغل</span></h2>
+    <p style="margin-top:6px">سير العمل <span class="latin">(Workflow)</span> سلسلة خطوات تربط بداية واضحة بنتيجة تقدر تراجعها.</p>
+    <div class="chain">
+      <div class="link first"><span class="ic"><i data-ic="cursor"></i></span><span class="num">01</span><span class="tt">المحفّز</span><span class="ts">ما الذي يبدأ العملية؟</span></div>
+      <div class="link"><span class="ic"><i data-ic="layers"></i></span><span class="num">02</span><span class="tt">المدخلات</span><span class="ts">ما البيانات التي نحتاجها؟</span></div>
+      <div class="link"><span class="ic"><i data-ic="db"></i></span><span class="num">03</span><span class="tt">الشروط</span><span class="ts">تحدد القواعد</span></div>
+      <div class="link"><span class="ic"><i data-ic="list"></i></span><span class="num">04</span><span class="tt">الإجراء</span><span class="ts">ماذا سيفعل النظام؟</span></div>
+      <div class="link"><span class="ic"><i data-ic="target"></i></span><span class="num">05</span><span class="tt">المخرج</span><span class="ts">ما نتيجة العملية؟</span></div>
+    </div>
+    <span class="tag-c"><i data-ic="book"></i>مفهوم</span>
+    <div class="defs"><div class="def"><div class="term"><b>سير العمل</b><span class="latin">Workflow</span></div><div class="desc">هو تسلسل منظّم من المهام والقرارات التي تُنفّذ لتحقيق نتيجة محددة، سواء يدويًا أو باستخدام الأتمتة.</div></div></div>
+    <span class="tag-c dark"><i data-ic="code"></i>مثال تقني</span>
+    <div class="tech">
+      <div class="st">
+        <h4>طلب وجبة عبر تطبيق توصيل!</h4>
+        <p class="intro">تخيّل أنك طلبت وجبتك المفضلة عبر تطبيق توصيل. بمجرد تأكيد الطلب، تبدأ سلسلة من الخطوات دون الحاجة إلى تنفيذ كل واحدة منها يدويًا.</p>
+        <ol class="tsteps">
+          <li><span class="num">01</span><span><b>المحفّز:</b> تضغط على زر «تأكيد الطلب».</span></li>
+          <li><span class="num">02</span><span><b>المدخلات:</b> يستقبل النظام تفاصيل الوجبة، وعنوان التوصيل، وطريقة الدفع.</span></li>
+          <li><span class="num">03</span><span><b>الشروط:</b> يتحقق من توفر الوجبة وإمكانية التوصيل إلى عنوانك.</span></li>
+          <li><span class="num">04</span><span><b>الإجراءات:</b> يسجل الطلب ويرسله إلى المطعم لتجهيزه.</span></li>
+          <li><span class="num">05</span><span><b>المخرجات:</b> تظهر حالة «تم تأكيد الطلب»، ويصلك إشعار بالتأكيد.</span></li>
+        </ol>
+      </div>
+      <div class="fl"><svg data-flow viewBox="0 0 520 600"></svg></div>
+    </div>
+  </section>
+
+  <!-- 13 · topic 3 (cont.) flowchart symbols -->
+  <section class="page" data-sec="الفصل الأول / 03">
+    <span class="kicker"><i class="dot"></i>دليل عملي | قراءة مخططات سير العمل</span>
+    <h2>لكل شكل <span class="hl">معنى!</span></h2>
+    <p class="lead" style="margin-top:6px">كيف نعبّر عن عملية كاملة باستخدام أشكال بسيطة؟ يساعدنا المخطط الانسيابي <span class="latin">(Flowchart)</span>.</p>
+    <span class="tag-c"><i data-ic="book"></i>مفهوم</span>
+    <div class="defs"><div class="def"><div class="term"><b>المخطط الانسيابي</b><span class="latin">Flowchart</span></div><div class="desc">تمثيل بصري يوضّح تسلسل خطوات العملية والقرارات التي تتضمنها، باستخدام أشكال ورموز محددة تربط بينها أسهم تُبيّن اتجاه سير العمل من البداية إلى النهاية.</div></div></div>
+    <p style="margin-top:16px"><strong>الأشكال الأساسية في المخطط الانسيابي</strong></p>
+    <div class="symbols" id="symbols"></div>
+    <div class="keyline">مكوّنات سير العمل تصف ما تحتاجه العملية، أما أشكال <span class="latin">Flowchart</span> فتساعدنا على رسم خطواتها وقراراتها.</div>
+  </section>
+
+  <!-- 14 · topic 4 -->
+  <section class="page" data-sec="الفصل الأول / 04">
+    <div class="head-row"><span class="badge"><b>04</b>من 05</span><span class="kicker">أنواع الأتمتة</span></div>
+    <h2>ليست كل عمليات الأتمتة <span class="hl">تعمل بالطريقة نفسها!</span></h2>
+    <p style="margin-top:6px">فبعضها ينفّذ قواعد محددة، وبعضها يربط خطوات العمل بين أنظمة مختلفة، بينما يستطيع بعضها محاكاة الإجراءات التي ينفذها الإنسان على الحاسوب. لنتعرف على ثلاثة أساليب شائعة في أتمتة الأعمال.</p>
+    <div class="tiles c3">
+      <div class="tile"><span class="ic"><i data-ic="list"></i></span><span class="tt">الأتمتة القائمة على القواعد</span><span class="ts">إذا تحقق الشرط نفّذ</span></div>
+      <div class="tile"><span class="ic"><i data-ic="nodes"></i></span><span class="tt">أتمتة سير العمل</span><span class="ts">ربط خطوات وأنظمة</span></div>
+      <div class="tile"><span class="ic"><i data-ic="cpu"></i></span><span class="tt">أتمتة العمليات الروبوتية</span><span class="ts">محاكاة استخدام الحاسوب</span></div>
+    </div>
+    <span class="tag-c"><i data-ic="book"></i>مفهوم</span>
+    <div class="defs">
+      <div class="def"><div class="term"><b>الأتمتة القائمة على القواعد</b><span class="latin">Rule-Based Automation</span></div><div class="desc">تعتمد على تعليمات وشروط محددة مسبقًا، ينفّذها النظام عند تحققها.</div></div>
+      <div class="def"><div class="term"><b>أتمتة سير العمل</b><span class="latin">Workflow Automation</span></div><div class="desc">تُستخدم لتنظيم سلسلة من المهام وتنفيذها تلقائيًا، وقد تربط بين عدة أنظمة وأقسام.</div></div>
+      <div class="def"><div class="term"><b>أتمتة العمليات الروبوتية</b><span class="latin">Robotic Process Automation (RPA)</span></div><div class="desc">تعتمد على برامج تحاكي تفاعل الإنسان مع واجهات الحاسوب، مثل فتح التطبيقات، وإدخال البيانات، والضغط على الأزرار.</div></div>
+    </div>
+    <span class="tag-c dark"><i data-ic="code"></i>مثال تطبيقي</span>
+    <div class="card sand"><p>تستقبل شركة بيانات العملاء في ملف <span class="latin">Excel</span>، ويقوم موظف يوميًا بنقلها إلى نظام قديم لا يتيح ربطًا مباشرًا. <strong>أي أسلوب من أساليب الأتمتة الثلاثة يمكن استخدامه لتنفيذ هذه المهمة؟</strong></p><p style="margin-top:6px;font-weight:800;color:var(--signal)">الحل في الصفحة التالية</p></div>
+  </section>
+
+  <!-- 15 · topic 4 (cont.) -->
+  <section class="page" data-sec="الفصل الأول / 04">
+    <span class="tag-c dark" style="margin-top:0"><i data-ic="code"></i>الحل</span>
+    <div class="card dark"><h4>أتمتة العمليات الروبوتية <span class="latin">(RPA)</span>.</h4><p>لأنها تتيح لبرنامج آلي محاكاة خطوات الموظف على الحاسوب، مثل فتح ملف <span class="latin">Excel</span>، وقراءة بيانات العملاء، ثم إدخالها في النظام القديم تلقائيًا، دون الحاجة إلى ربط مباشر بين النظامين.</p></div>
+    <span class="tag-c out"><i data-ic="alert"></i>تنبيه</span>
+    <div class="card out"><p>هذه الأساليب ليست منفصلة تمامًا؛ فقد تعتمد أتمتة سير العمل على قواعد محددة، وقد تستخدم تقنية <span class="latin">RPA</span> لتنفيذ إحدى خطواتها.</p></div>
+    <div class="head-row" style="margin-top:30px"><span class="badge"><b>05</b>من 05</span><span class="kicker">الفرق بين الأتمتة والذكاء الاصطناعي</span></div>
+    <h2>أتمتة، ذكاء اصطناعي، <span class="hl">أم تحوّل رقمي؟</span></h2>
+    <p style="margin-top:6px">نسمع هذه المصطلحات كثيرًا في عالم التقنية والأعمال، وقد تبدو متشابهة، لكنها تختلف في أهدافها وطريقة استخدامها. فقد تستخدم التقنية لتنفيذ مهمة تلقائيًا، أو لتحليل المعلومات، أو لإعادة تصميم طريقة عمل مؤسسة كاملة!</p>
+    <span class="tag-c"><i data-ic="life"></i>مثال من الحياة</span>
+    <div class="card sand">
+      <h4>متجر تمور في القصيم</h4>
+      <p>تخيّل متجرًا سعوديًا لبيع التمور ودّه يطوّر أعماله باستخدام التقنية. كيف يمكن يوظّف كل مفهوم؟</p>
+      <div class="lens">
+        <div><span class="lt"><i></i>أتمتة</span><p>تسجيل كل طلب مكتمل آليًا</p></div>
+        <div><span class="lt"><i></i>ذكاء اصطناعي</span><p>اقتراح تصنيف شكوى مكتوبة للمراجعة</p></div>
+        <div><span class="lt"><i></i>تحوّل رقمي</span><p>تغيير تجربة البيع والمخزون والتوصيل عبر الأنظمة والفرق</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · topic 5 (cont.) -->
+  <section class="page" data-sec="الفصل الأول / 05">
+    <span class="tag-c" style="margin-top:0"><i data-ic="book"></i>مفهوم</span>
+    <div class="defs">
+      <div class="def"><div class="term"><b>الأتمتة</b><span class="latin">Automation</span></div><div class="desc">استخدام الأنظمة لتنفيذ المهام والإجراءات تلقائيًا، وفق خطوات وقواعد محددة، مع تقليل التدخل البشري.</div></div>
+      <div class="def"><div class="term"><b>الذكاء الاصطناعي</b><span class="latin">Artificial Intelligence</span></div><div class="desc">تقنيات تمكّن الأنظمة من أداء مهام تتطلب عادةً قدرات بشرية، مثل فهم اللغة، والتعرف على الأنماط، والتصنيف، والتنبؤ، وتوليد المحتوى.</div></div>
+      <div class="def"><div class="term"><b>التحوّل الرقمي</b><span class="latin">Digital Transformation</span></div><div class="desc">تغيير وتطوير أساليب عمل المؤسسة وخدماتها بالاعتماد على التقنيات الرقمية والبيانات، ويشمل العمليات والأفراد وطريقة تقديم القيمة للمستفيدين.</div></div>
+    </div>
+    <p style="margin-top:14px">يمكن للأتمتة والذكاء الاصطناعي العمل معًا ضمن عملية واحدة؛ فمثلًا، يستقبل النظام استفسارًا جديدًا تلقائيًا، ويستخدم الذكاء الاصطناعي لاقتراح تصنيفه، ثم توجّهه الأتمتة إلى القسم المناسب وفق ضوابط محددة.</p>
+    <div class="ia">
+      <div class="bx"><small>أتمتة</small>يستقبل النظام استفسارًا جديدًا تلقائيًا</div><span class="ar"><i data-ic="arrow"></i></span>
+      <div class="bx mid"><small>ذكاء اصطناعي</small>يقترح تصنيف الاستفسار</div><span class="ar"><i data-ic="arrow"></i></span>
+      <div class="bx"><small>أتمتة</small>توجّهه إلى القسم المناسب وفق ضوابط محددة</div>
+    </div>
+    <div class="keyline"><strong>ويُعرف الجمع بين تقنيات الأتمتة والذكاء الاصطناعي باسم الأتمتة الذكية <span class="latin">(Intelligent Automation)</span>.</strong></div>
+    <div class="shape" data-pocket="none" style="margin-top:auto;padding:28px 30px 30px">
+      <div class="on-dark" style="font-size:12.5px;font-weight:800;color:var(--signal)">من المذكرة</div>
+      <div class="on-dark" style="font-size:25px;font-weight:800;line-height:1.45;margin-top:6px">«الأتمتة لا تعني إلغاء دور الإنسان، بل تقليل انشغاله بالخطوات المتكررة ليتمكن من <span class="hl">التركيز على ما هو أهم.</span>»</div>
+    </div>
+  </section>
+
+  <!-- 17 · chapter recap -->
+  <section class="page" data-sec="الفصل الأول / الحصيلة">
+    <div class="shape op" data-pocket="tr">
+      <div class="op-top">
+        <div class="pocket op-pk">
+          <span class="chip">نهاية الفصل الأول</span>
+          <h2>حصيلة الفصل <span class="hl">في صفحة</span></h2>
+          <p class="lead" style="color:var(--muted)">من أول مهمة متكررة إلى أول سير عمل، تعرّفت في هذا الفصل على الأساسيات التي تساعدك على فهم الأتمتة واكتشاف فرص استخدامها.</p>
+        </div>
+        <div class="op-num on-dark" style="justify-content:center"><small style="font-size:14px">خمس أفكار بدأت بها رحلتك</small></div>
+      </div>
+      <div class="recap on-dark">
+        <div class="defl"><b>الأتمتة <span class="latin">(Automation)</span>:</b> هي استخدام التقنيات والأنظمة لتنفيذ مهام أو عمليات محددة تلقائيًا، مع تقليل الحاجة إلى التدخل البشري المباشر.</div>
+        <div><div class="rh">كيف نحدد فرص الأتمتة؟</div><div class="pills"><span>التكرار</span><span>وضوح الخطوات</span><span>توفر البيانات</span><span>الجدوى</span></div></div>
+        <div><div class="rh">خمس قطع تحرّك الشغل</div><div class="pills"><span class="s">المحفّز</span><i data-ic="arrow"></i><span>المدخلات</span><i data-ic="arrow"></i><span>الشروط</span><i data-ic="arrow"></i><span>الإجراء</span><i data-ic="arrow"></i><span>المخرج</span></div></div>
+        <div><div class="rh">ليست كل عمليات الأتمتة تعمل بالطريقة نفسها!</div><div class="pills"><span>الأتمتة القائمة على القواعد</span><span>أتمتة سير العمل</span><span>أتمتة العمليات الروبوتية</span></div></div>
+        <div style="margin-top:auto"><img data-dom="1" data-vb="600 170" alt="" style="width:100%;display:block"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 · next chapter -->
+  <section class="page" data-sec="الجزء الثاني">
+    <div class="shape op" data-pocket="tr">
+      <div class="op-top">
+        <div class="pocket op-pk">
+          <span class="badge"><b>02</b>من 03</span>
+          <h2>الجزء <span class="hl">الثاني</span></h2>
+          <p class="lead" style="color:var(--muted)">من مذكرة أتمتة الأعمال من الصفر</p>
+        </div>
+        <div class="op-num on-dark"><span class="num">02</span><small>الجزء القادم</small></div>
+      </div>
+      <div class="op-body on-dark">
+        <div class="op-quote"><small>من المذكرة</small>الخطوة الأولى تمنحك البداية، وحسن الترتيب يمنحك الوصول</div>
+        <div class="op-dom"><img data-dom="2" data-vb="600 260" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 22 · back cover -->
+  <section class="page cover" data-bare>
+    <div class="shape cov" data-pocket="none">
+      <div class="back on-dark">
+        <img class="m" src="../../../assets/brand/ramz-mark-orange.png" alt="">
+        <div class="bq">«هنا لا تكتفي بما تعلمته… <span class="hl">بل اصنع طريقك وابتكر.</span>»</div>
+        <div><div class="bn">أكاديمية رمـز</div><div class="bs">أتمتة الأعمال من الصفر · بقلم مهجه الصبحي · الإصدار الأول</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="../../../assets/organic.js"></script>
+<script src="../../../assets/catalog.js"></script>
+<script src="../../../assets/resume.js"></script>
+<script src="../../../assets/highlights.js"></script>
+<script>
+(function () {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const R = window.RamzOrganic;
+
+  // ---------- icons ----------
+  const P = {
+    book: '<path d="M12 6.5C10.5 5 8.2 4.5 4 4.6v13.6c4.2-.1 6.5.4 8 1.9 1.5-1.5 3.8-2 8-1.9V4.6c-4.2-.1-6.5.4-8 1.9zM12 6.5v13.6"/>',
+    arrow: '<path d="M20 12H5M11 6l-6 6 6 6"/>', alert: '<circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.4v.1"/>',
+    bulb: '<path d="M9 17.5h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2v.2h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
+    life: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.8 3.6-6 7-6s6.2 2.2 7 6"/>', code: '<path d="M9 7l-5 5 5 5M15 7l5 5-5 5M13.5 5l-3 14"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>', check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    shuffle: '<path d="M4 7h4c4 0 4 10 8 10h4M4 17h4c1.5 0 2.4-1.4 3.2-3M20 7h-4c-1.5 0-2.4 1.4-3.2 3M17 4l3 3-3 3M17 14l3 3-3 3"/>',
+    box: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"/>', repeat: '<path d="M4 11V9a3 3 0 0 1 3-3h12M16 3l3 3-3 3M20 13v2a3 3 0 0 1-3 3H5M8 21l-3-3 3-3"/>',
+    db: '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>',
+    chart: '<path d="M4 20h16M7 16v-3M11 16V9M15 16v-5M19 16V5"/>', cursor: '<path d="M5 4l6.5 16 2.2-6.8L20.5 11z"/><path d="M14 14l5 5"/>',
+    layers: '<path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/>', list: '<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    target: '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+    cpu: '<rect x="6" y="6" width="12" height="12" rx="3"/><path d="M10 2.5v3M14 2.5v3M10 18.5v3M14 18.5v3M2.5 10h3M2.5 14h3M18.5 10h3M18.5 14h3"/><circle cx="12" cy="12" r="2"/>',
+    pen: '<path d="M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5zM13.5 7l3 3"/>', nodes: '<circle cx="12" cy="5.5" r="2.5"/><circle cx="5.5" cy="18" r="2.5"/><circle cx="18.5" cy="18" r="2.5"/><path d="M12 8v4M12 12l-5 4.2M12 12l5 4.2"/>',
+    print: '<path d="M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="7" rx="1"/>',
+    bookmark: '<path d="M6 3.5h12v17l-6-4.5-6 4.5z"/>',
+    down: '<path d="M12 3v12M7 10l5 5 5-5M4 20h16"/>', home: '<path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/>'
+  };
+  const icon = (n, s) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+  $$('i[data-ic]').forEach((i) => { i.outerHTML = icon(i.dataset.ic, i.closest('.ic') ? 18 : i.closest('.ok') ? 14 : i.closest('.bar,.nav') ? 18 : 15); });
+
+  // ---------- generated lists ----------
+  const MEMO = (window.CATALOG.memos || []).find((m) => m.slug === 'automation-from-zero'), PART = MEMO.parts[0];
+  $('#tocList').innerHTML = MEMO.parts.map((pt) => `<a class="${pt === PART ? 'open' : ''}" ${pt === PART ? 'data-go="ch1"' : ''}><span class="num">${String(pt.n).padStart(2, '0')}</span><span>${pt.name}${pt.chapters ? ': ' + pt.chapters.join(' · ') : ''}</span><span class="st">${pt === PART ? 'في هذا الجزء' : ''}</span></a>`).join('');
+  const pad = (n) => String(n).padStart(2, '0');
+
+  // ---------- flowchart (static: the «نعم» path) and the symbols table ----------
+  const shapeD = ([k, cx, cy, w, h]) => { const x = cx - w / 2, y = cy - h / 2;
+    if (k === 'pill') return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${h / 2}"/>`;
+    if (k === 'rect') return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12"/>`;
+    if (k === 'para') return `<path d="M${x + 28},${y} H${x + w} L${x + w - 28},${y + h} H${x} Z" stroke-linejoin="round"/>`;
+    return `<path d="M${cx},${y} L${x + w},${cy} L${cx},${y + h} L${x},${cy} Z" stroke-linejoin="round"/>`; };
+  const FN = { start: ['pill', 260, 44, 220, 56, 'تأكيد الطلب', 1], input: ['para', 260, 132, 250, 58, 'استقبال البيانات', 1], dec: ['dia', 260, 236, 270, 100, 'هل الوجبة متوفرة؟', 1],
+    reg: ['rect', 390, 360, 210, 58, 'تسجيل الطلب', 1], note: ['rect', 390, 446, 210, 58, 'إرسال إشعار التأكيد', 1], ok: ['pill', 390, 540, 210, 58, 'تم تأكيد الطلب', 2],
+    warn: ['rect', 120, 380, 200, 76, 'إرسال تنبيه|بعدم التوفر', 0], fail: ['pill', 120, 500, 200, 58, 'لم يؤكَّد الطلب', 0] };
+  const arrow = (d, x, y, dir, c) => `<path d="${d}" fill="none" stroke="${c}" stroke-width="2.4"/><path d="M${x - 6},${y - 9} L${x},${y} L${x + 6},${y - 9}" fill="none" stroke="${c}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`;
+  let fg = '';
+  const on = '#FF5A1F', off = 'rgba(242,239,232,.3)';
+  fg += arrow('M260,72 V103', 260, 103, 0, on) + arrow('M260,161 V186', 260, 186, 0, on) + arrow('M395,236 H430 Q440,236 440,246 V331', 440, 331, 0, on) + arrow('M390,389 V417', 390, 417, 0, on) + arrow('M390,475 V511', 390, 511, 0, on) + arrow('M125,236 H90 Q80,236 80,246 V342', 80, 342, 0, off) + arrow('M120,418 V471', 120, 471, 0, off);
+  fg += `<text x="452" y="226" fill="${on}" font-size="17" text-anchor="middle">نعم</text><text x="68" y="226" fill="rgba(242,239,232,.6)" font-size="17" text-anchor="middle">لا</text>`;
+  Object.values(FN).forEach((n) => { const st = n[6]; const fill = st === 2 ? '#FF5A1F' : st ? '#2E2E2B' : '#1C1C1B', stroke = st === 2 ? '#FF5A1F' : st ? 'rgba(242,239,232,.5)' : 'rgba(242,239,232,.22)', tc = st === 2 ? '#141413' : st ? '#F2EFE8' : 'rgba(242,239,232,.6)';
+    const ls = n[5].split('|'); fg += `<g fill="${fill}" stroke="${stroke}" stroke-width="2">${shapeD(n)}</g>` + ls.map((l, i) => `<text x="${n[1]}" y="${n[2] + 6 + (i - (ls.length - 1) / 2) * 24}" fill="${tc}" font-size="18" text-anchor="middle" direction="rtl">${l}</text>`).join(''); });
+  $$('svg[data-flow]').forEach((s) => s.innerHTML = fg);
+  const SY = [['البيضاوي', 'pill', 'البداية والنهاية', 'Start / End'], ['متوازي الأضلاع', 'para', 'إدخال البيانات أو إخراجها', 'Input / Output'], ['المعيّن', 'dia', 'قرار أو شرط', 'Decision'], ['المستطيل', 'rect', 'إجراء أو خطوة تنفيذ', 'Process'], ['السهم', 'arrow', 'اتجاه سير العملية', 'Flowline']];
+  $('#symbols').innerHTML = `<div class="sym head"><span>الشكل</span><span>الرمز</span><span>المعنى</span></div>` + SY.map(([n, k, m, l]) => {
+    const s = k === 'arrow' ? '<path d="M120,23 H22 M34,13 L20,23 L34,33" fill="none" stroke="#141413" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+      : `<g fill="${k === 'dia' ? '#FF5A1F' : '#141413'}">${shapeD([k, 60, 23, k === 'dia' ? 110 : 100, k === 'dia' ? 42 : 36])}</g>`;
+    return `<div class="sym"><span class="nm">${n}</span><svg viewBox="0 0 120 46">${s}</svg><span class="mn">${m}<span class="latin">${l}</span></span></div>`; }).join('');
+
+  // ---------- dominoes, as pictures (no ids to clash when pages are cloned) ----------
+  const dominoSVG = (VW, VH, lit) => {
+    const rr = (x, y, w, h, r) => R.smoothPoly([[x, y, r], [x + w, y, r], [x + w, y + h, r], [x, y + h, r]], 0.42);
+    let g = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}"><defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3A37"/><stop offset="1" stop-color="#242422"/></linearGradient><linearGradient id="og" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7A45"/><stop offset="1" stop-color="#FF5A1F"/></linearGradient><filter id="glow" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="6"/></filter></defs>`;
+    const base = VH - 18, x0 = 20, x1 = VW - 60, n = 8;
+    const line = `M${x0},${base - VH * 0.32} C${VW * 0.35},${base - VH * 0.2} ${VW * 0.6},${base - 6} ${x1 + 40},${base}`;
+    g += `<path d="${line}" fill="none" stroke="#FF5A1F" stroke-width="8" opacity=".45" filter="url(#glow)"/><path d="${line}" fill="none" stroke="#FF5A1F" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>`;
+    for (let i = 0; i < n; i++) {
+      const t = i / (n - 1), s = 0.62 + 0.38 * t, h = VH * 0.62 * s, w = h * 0.52, cx = x0 + 30 + (x1 - x0 - 60) * Math.pow(t, 1.08);
+      const by = base - VH * 0.32 * (1 - t) - 4 * t, isLit = i >= n - lit, tip = i === n - 1 ? -17 : 0, x = cx - w / 2, y = by - h, r = w * 0.26, side = w * 0.16;
+      g += `<g transform="rotate(${tip} ${cx - w / 2} ${by})"><path d="${rr(x - side, y + side * .5, w, h, r)}" fill="${isLit ? '#B8401A' : '#1B1B1A'}"/><path d="${rr(x, y, w, h, r)}" fill="url(#${isLit ? 'og' : 'dg'})"/><path d="${rr(x + w * .14, y + h * .08, w * .72, h * .07, h * .035)}" fill="#fff" opacity="${isLit ? .22 : .06}"/></g>`;
+    }
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(g + '</svg>');
+  };
+  $$('img[data-dom]').forEach((im) => { const [w, h] = im.dataset.vb.split(' ').map(Number); im.src = dominoSVG(w, h, +im.dataset.dom); });
+
+  // ---------- running head / foot on every sheet ----------
+  const pages = $$('#store .page');
+  pages.forEach((pg, i) => {
+    if (pg.hasAttribute('data-bare')) return;
+    const body = document.createElement('div'); body.className = 'pbody';
+    while (pg.firstChild) body.appendChild(pg.firstChild);
+    pg.innerHTML = `<div class="run"><span>أكاديمية رمـز / أتمتة الأعمال من الصفر</span><img src="../../../assets/brand/ramz-mark-orange.png" alt=""></div><div class="run-line"></div>`;
+    pg.appendChild(body);
+    pg.insertAdjacentHTML('beforeend', `<div class="pfoot"><span>${pg.dataset.sec || ''}</span><span class="pn">${pad(i + 1)}</span></div>`);
+  });
+
+  // ---------- the dark shape, measured on the unscaled sheet and painted as a picture ----------
+  const paint = (host) => {
+    const W = host.offsetWidth, H = host.offsetHeight; if (!W || !H) return;
+    const hr = host.getBoundingClientRect(), mode = host.dataset.pocket, pk = host.querySelector('.pocket');
+    const O = Math.max(36, Math.min(120, W * 0.1)), I = O * 0.72;
+    let pts;
+    if (mode === 'none' || !pk) pts = [[0, 0, O * .7], [W, 0, O * .7], [W, H, O * .7], [0, H, O * .7]];
+    else { const r = pk.getBoundingClientRect(), ph = r.bottom - hr.top, x = r.left - hr.left;
+      pts = [[0, 0, O], [x, 0, O * .8], [x, ph, I], [W, ph, O * .8], [W, H, O], [0, H, O * 1.15]]; }
+    const d = R.smoothPoly(pts, 0.4);
+    const head = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><defs><linearGradient id="g" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#262624"/><stop offset="1" stop-color="#141413"/></linearGradient><clipPath id="c"><path d="${d}"/></clipPath><filter id="n" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><path d="${d}" fill="url(#g)"/>`;
+    const url = (s) => `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(s)}")`;
+    // on screen: gradient + soft grain; in print the grain is left out (it would be rasterised and bloat the PDF)
+    host.style.setProperty('--bg', url(head + `<rect width="${W}" height="${H}" filter="url(#n)" opacity=".09" clip-path="url(#c)" style="mix-blend-mode:overlay"/></svg>`));
+    host.style.setProperty('--bg-print', url(head + '</svg>'));
+  };
+
+  // ================= the flip-book =================
+  const book = $('#book'), slotR = $('#slotR'), slotL = $('#slotL'), leaf = $('#leaf'), scaler = $('#scaler');
+  const N = pages.length, DUR = 900;
+  let two = true, k = 0, busy = false, PW = 0, PH = 0;
+  const clone = (i) => (i >= 0 && i < N ? pages[i].cloneNode(true) : null);
+  const put = (slot, i) => { slot.innerHTML = ''; const c = clone(i); if (c) slot.appendChild(c); };
+  // two-page spreads, read right to left: spread k shows page 2k-1 on the right and 2k on the left
+  const R_ = (s) => 2 * s - 1, L_ = (s) => 2 * s;
+  const maxK = () => (two ? Math.floor(N / 2) : N - 1);
+  const layout = () => {
+    two = innerWidth >= 900 && innerWidth / innerHeight > 1.05;
+    PW = pages[0].offsetWidth; PH = pages[0].offsetHeight;
+    const wrap = $('#stageWrap'), aw = wrap.clientWidth - 40, ah = wrap.clientHeight - 64;
+    const bw = two ? PW * 2 : PW, sc = Math.min(aw / bw, ah / PH);
+    book.style.width = bw + 'px'; book.style.height = PH + 'px';
+    [slotR, slotL, leaf].forEach((e) => { e.style.width = PW + 'px'; e.style.height = PH + 'px'; });
+    slotR.style.left = (two ? PW : 0) + 'px'; slotL.style.left = '0px'; slotL.style.display = two ? '' : 'none';
+    book.classList.toggle('two', two);
+    scaler.style.transform = `scale(${sc}) translate(-50%, -50%)`;
+    $('#jump').max = maxK();
+  };
+  const shift = () => { if (!two) { book.style.transform = ''; return; }
+    const r = R_(k), l = L_(k); book.style.transform = r < 0 ? `translateX(${PW / 2}px)` : l >= N ? `translateX(${-PW / 2}px)` : 'translateX(0)'; };
+  const label = () => {
+    const c = $('#count');
+    if (two) { const r = R_(k), l = L_(k), a = [r, l].filter((i) => i >= 0 && i < N).map((i) => i + 1); c.innerHTML = `الصفحة <b>${a.join('–')}</b> من ${N}`; }
+    else c.innerHTML = `الصفحة <b>${k + 1}</b> من ${N}`;
+    $('#prev').disabled = k <= 0; $('#next').disabled = k >= maxK(); $('#jump').value = k;
+    if (window.Resume && k > 0) Resume.set(bookState());
+  };
+  const show = () => { if (two) { put(slotR, R_(k)); put(slotL, L_(k)); } else put(slotR, k); shift(); label(); };
+  const faces = (front, back) => { const [f, b] = leaf.children; f.innerHTML = '<div class="shade"></div>'; b.innerHTML = '<div class="shade"></div>';
+    const cf = clone(front), cb = clone(back); if (cf) f.prepend(cf); if (cb) b.prepend(cb); };
+  const flip = (dir) => {
+    if (busy) return; const nk = k + dir; if (nk < 0 || nk > maxK()) return; busy = true;
+    leaf.style.transition = 'none'; leaf.style.setProperty('--dur', DUR + 'ms');
+    let from, to;
+    if (two) {
+      if (dir > 0) { faces(L_(k), R_(nk)); leaf.style.left = '0px'; leaf.style.transformOrigin = 'right center'; from = 0; to = 180; put(slotL, L_(nk)); }
+      else { faces(R_(k), L_(nk)); leaf.style.left = PW + 'px'; leaf.style.transformOrigin = 'left center'; from = 0; to = -180; put(slotR, R_(nk)); }
+    } else {
+      leaf.style.left = '0px'; leaf.style.transformOrigin = 'right center';
+      if (dir > 0) { faces(k, -1); from = 0; to = 180; put(slotR, nk); }
+      else { faces(nk, -1); from = 180; to = 0; }
+    }
+    leaf.style.transform = `rotateY(${from}deg)`; leaf.style.display = 'block'; leaf.classList.remove('go');
+    void leaf.offsetWidth;
+    leaf.style.transition = `transform ${DUR}ms cubic-bezier(.35,.1,.25,1)`; leaf.classList.add('go'); leaf.style.transform = `rotateY(${to}deg)`;
+    k = nk; shift(); label();
+    setTimeout(() => { show(); leaf.style.display = 'none'; leaf.classList.remove('go'); busy = false; }, DUR + 20);
+  };
+  // ---------- «كمّل من حيث وقفت» ----------
+  const BOOK = 'memos/automation-from-zero/part-1/book.html';
+  const pageNow = () => two ? Math.max(1, R_(k) + 1) : k + 1;
+  const bookState = () => ({ memo: MEMO.slug, memoTitle: `${MEMO.title} ${MEMO.titleHl}`, part: PART.n, partName: `${PART.name} (كتاب)`, mode: 'book', label: `الصفحة ${pageNow()}`, href: `${BOOK}?p=${pageNow()}` });
+  const go = (pageIndex) => { k = two ? Math.min(maxK(), Math.floor((pageIndex + 1) / 2)) : pageIndex; show(); };
+
+  $('#next').addEventListener('click', () => flip(1));
+  $('#prev').addEventListener('click', () => flip(-1));
+  $('#jump').addEventListener('input', (e) => { k = +e.target.value; show(); });
+  addEventListener('keydown', (e) => { if (e.target.closest && e.target.closest('textarea, input')) return; if (e.key === 'ArrowLeft') flip(1); if (e.key === 'ArrowRight') flip(-1); });
+  // click the left half to go forward, the right half to go back (an Arabic book opens to the right)
+  $('#stageWrap').addEventListener('click', (e) => { if (e.target.closest('[data-go], mark.hl-mark') || String(getSelection()).trim()) return; const r = book.getBoundingClientRect(); if (e.clientX < r.left + r.width / 2) flip(1); else flip(-1); });
+  book.addEventListener('click', (e) => { const g = e.target.closest('[data-go]'); if (g) { e.stopPropagation(); go(pages.findIndex((p) => p.dataset.sec === 'الفصل الأول')); } });
+  let sx = null; $('#stageWrap').addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+  $('#stageWrap').addEventListener('touchend', (e) => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 40) flip(dx > 0 ? 1 : -1); });
+  $('#print').addEventListener('click', () => print());
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { const was = two, first = two ? Math.max(0, R_(k)) : k; layout(); if (was !== two) go(first); else { show(); } }, 120); });
+
+  const imgs = $$('#store img').map((im) => im.complete ? Promise.resolve() : new Promise((r) => { im.onload = im.onerror = r; }));
+  Promise.all([document.fonts.ready, ...imgs]).then(() => {
+    $$('#store .shape').forEach(paint);
+    layout(); const q = new URLSearchParams(location.search).get('p'); if (q) go(+q - 1); else show();
+    if (window.Resume) {
+      const saver = Resume.mount({ root: '../../../', state: bookState, fab: false });
+      $('#saveBtn').addEventListener('click', (e) => { e.stopPropagation(); saver.open(); });
+      if (window.Highlights) {
+        Highlights.init({ key: 'automation-from-zero:1', fab: false, share: () => saver.open(),
+          scopes: () => pages,                                       // the sheets; the open spread shows copies of them
+          selScope: (el) => el.closest('#book .page'),
+          onApplied: () => { if (!busy) show(); },
+          onCount: (n) => { const c = $('#hlCount'); c.textContent = n; c.style.display = n ? '' : 'none'; },
+          goTo: (id) => { const i = pages.findIndex((pg) => pg.querySelector(`mark.hl-mark[data-id="${id}"]`)); if (i >= 0) go(i); } });
+        $('#hlBtn').addEventListener('click', (e) => { e.stopPropagation(); Highlights.openList(); });
+      }
+      const saved = Resume.get();
+      if (!q && saved && saved.href && saved.href.startsWith(BOOK + '?p=')) { const n = +saved.href.split('?p=')[1]; if (n > 1) Resume.toast(`وقفت آخر مرة عند <b>الصفحة ${n}</b>`, 'كمّل', () => go(n - 1)); }
+    }
+    document.body.dataset.ready = '1';
+  });
+})();
+</script>
+</body>
+</html>
