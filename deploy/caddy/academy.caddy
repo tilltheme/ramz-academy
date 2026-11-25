@@ -1,0 +1,23 @@
+# أكاديمية رمـز — موقع ثابت على academy.ramz.net.sa فقط. لا يلمس أي اسم آخر.
+# Caddy issues and renews this name's HTTPS certificate on its own (needs the DNS A record first).
+academy.ramz.net.sa {
+	root * /srv/academy/site
+	encode gzip
+	file_server
+
+	header {
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'self'"
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+	@fonts path /assets/fonts/*
+	header @fonts Cache-Control "public, max-age=604800"
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}

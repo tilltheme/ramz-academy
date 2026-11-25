@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# أكاديمية رمـز — تحديث الموقع بعد ما يندمج تعديل في main. لا يلمس nginx ولا رمز.
+# أكاديمية رمـز — تحديث الموقع بعد ما يندمج تعديل في main. لا يلمس خادم الويب ولا رمز.
 #   bash deploy/update.sh            # ينزّل آخر main وينقل الرابط إليه
 #   bash deploy/update.sh --back     # يرجع للإصدار اللي قبله
 set -euo pipefail
