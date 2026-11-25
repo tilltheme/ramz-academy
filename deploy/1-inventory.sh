@@ -8,7 +8,7 @@ OUT=~/academy-deploy; mkdir -p "$OUT"; cd "$OUT"
 R=https://ramz.net.sa
 
 echo "== قبل كل شي: خذ Snapshot للخادم من لوحة SCCC (الخطوة 3-أ في دليل النشر)."
-read -r -p "أخذت اللقطة؟ اكتب y للمتابعة: " a; [ "$a" = y ] || { echo "وقفنا. خذ اللقطة أولًا."; exit 1; }
+read -r -p "أخذت اللقطة؟ اكتب y للمتابعة: " a; a=$(printf %s "$a" | tr -d "\r[:space:]" | tr A-Z a-z); [ "$a" = y ] || [ "$a" = yes ] || [ "$a" = نعم ] || { echo "وقفنا. خذ اللقطة أولًا."; exit 1; }
 
 {
   echo "### النظام";            cat /etc/os-release 2>/dev/null | grep -E '^(PRETTY_NAME|VERSION_ID)='; uptime; echo "cpu: $(nproc)"; free -h; df -h /
@@ -37,4 +37,17 @@ curl -sI $R/ | grep -iE "^(http|server|content-security|strict-transport)" > bas
 curl -s -o /dev/null -w "%{http_code}\n" $R/api/requests   > base-api-code.txt
 curl -s -o /dev/null -w "%{http_code}\n" https://www.ramz.net.sa/ > base-www-code.txt
 echo "home: $(cat base-home-code.txt) · api: $(cat base-api-code.txt) · www: $(cat base-www-code.txt)"
-echo; echo "تم. المخرجات في $OUT/inventory.txt وملفات base-*.txt — راجعها، ثم أرسل لـClaude ملخصها (بدون أي أسرار)."
+echo
+echo "==================== الملخص (صوّره وأرسله) ===================="
+grep -m1 PRETTY_NAME inventory.txt
+free -h | awk '/Mem:/{print "memory: "$2" total, "$7" available"}'
+grep -E "^found:" inventory.txt | tr '\n' ' '; echo
+command -v nginx >/dev/null && nginx -v 2>&1
+command -v nginx >/dev/null && echo "nginx layout: $( [ -d /etc/nginx/sites-enabled ] && echo sites-enabled || echo conf.d )"
+command -v nginx >/dev/null && sudo nginx -T 2>/dev/null | grep -E "^\s*(server_name|listen)" | sed 's/^\s*//' | sort | uniq -c | head -20
+echo "listening on 80/443: $(sudo ss -ltnp | awk '$4 ~ /:(80|443)$/ {print $4" "$6}' | sed -E 's/users:\(\("([^"]+)".*/\1/' | sort -u | tr '\n' ' ')"
+echo "certificates: $(sudo ls /etc/letsencrypt/live 2>/dev/null | grep -v README | tr '\n' ' ')"
+echo "ramz.net.sa → $(cat base-home-code.txt) · /api/requests → $(cat base-api-code.txt) · www → $(cat base-www-code.txt)"
+[ -d /srv/academy ] && echo "/srv/academy: موجود!" || echo "/srv/academy: غير موجود — تمام"
+echo "================================================================="
+echo "المخرجات الكاملة في $OUT/inventory.txt (لا ترسلها كاملة؛ الملخص يكفي)."

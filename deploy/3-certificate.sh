@@ -5,7 +5,7 @@
 # Its renewal reloads nginx only (never restart), and touches no Ramz certificate.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"; NAME=academy.ramz.net.sa
-ask() { echo; echo "── $1"; read -r -p "   موافق؟ اكتب y للتنفيذ، أي شي ثاني يوقف: " a; [ "$a" = y ] || { echo "   وقفنا بدون تغيير."; exit 1; }; }
+ask() { echo; echo "── $1"; read -r -p "   موافق؟ اكتب y للتنفيذ، أي شي ثاني يوقف: " a; a=$(printf %s "$a" | tr -d "\r[:space:]" | tr A-Z a-z); { [ "$a" = y ] || [ "$a" = yes ] || [ "$a" = نعم ]; } || { echo "   وقفنا بدون تغيير."; exit 1; }; }
 command -v certbot >/dev/null || { echo "certbot مو موجود. لا تركّبه من هنا؛ أرسل لـClaude وش يستخدم الخادم للشهادات."; exit 1; }
 if [ -e /etc/nginx/sites-available/$NAME ]; then AVAIL=/etc/nginx/sites-available/$NAME; else AVAIL=/etc/nginx/conf.d/$NAME.conf; fi
 [ -f "$AVAIL" ] || { echo "شغّل deploy/2-install.sh أولًا."; exit 1; }

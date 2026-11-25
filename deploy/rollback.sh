@@ -4,10 +4,10 @@
 # Removes only what the academy added. Ramz's files and services are not touched.
 set -uo pipefail
 NAME=academy.ramz.net.sa
-read -r -p "يشيل ملف الأكاديمية من nginx (ثم nginx -t وreload). موافق؟ y: " a; [ "$a" = y ] || exit 1
+read -r -p "يشيل ملف الأكاديمية من nginx (ثم nginx -t وreload). موافق؟ y: " a; a=$(printf %s "$a" | tr -d "\r[:space:]" | tr A-Z a-z); [ "$a" = y ] || exit 1
 sudo rm -f /etc/nginx/sites-enabled/$NAME /etc/nginx/sites-available/$NAME /etc/nginx/conf.d/$NAME.conf
 sudo nginx -t && sudo systemctl reload nginx && echo "nginx رجع بدون الأكاديمية."
-read -r -p "تبي تحذف ملفات الأكاديمية في /srv/academy بعد؟ y: " b
+read -r -p "تبي تحذف ملفات الأكاديمية في /srv/academy بعد؟ y: " b; b=$(printf %s "$b" | tr -d "\r[:space:]" | tr A-Z a-z)
 [ "$b" = y ] && sudo rm -rf /srv/academy && echo "/srv/academy انحذف."
 echo "شهادة الأكاديمية (إن وُجدت) تُحذف بأمر صريح من المالك: sudo certbot delete --cert-name $NAME"
 echo "وإذا لزم أكثر: نسخة /etc/nginx في /root/nginx-backup-* أو لقطة SCCC."

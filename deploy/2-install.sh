@@ -10,7 +10,7 @@
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"; NAME=academy.ramz.net.sa
 REPO_TAR=https://github.com/tilltheme/ramz-academy/archive/refs/heads/main.tar.gz
-ask() { echo; echo "── $1"; read -r -p "   موافق؟ اكتب y للتنفيذ، أي شي ثاني يوقف: " a; [ "$a" = y ] || { echo "   وقفنا بدون تغيير."; exit 1; }; }
+ask() { echo; echo "── $1"; read -r -p "   موافق؟ اكتب y للتنفيذ، أي شي ثاني يوقف: " a; a=$(printf %s "$a" | tr -d "\r[:space:]" | tr A-Z a-z); { [ "$a" = y ] || [ "$a" = yes ] || [ "$a" = نعم ]; } || { echo "   وقفنا بدون تغيير."; exit 1; }; }
 
 # ---------- checks first (read only) ----------
 command -v nginx >/dev/null || { echo "nginx مو موجود — هذا السكربت لـnginx فقط. أرسل مخرجات الجرد لـClaude."; exit 1; }
