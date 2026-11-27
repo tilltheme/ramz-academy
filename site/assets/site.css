@@ -634,3 +634,9 @@
 .site-foot.no-follow .fgrid { grid-template-columns: 1.5fr 1fr 1fr; }
 @media (max-width: 1080px) { .site-foot.no-follow .fgrid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) { .site-foot.no-follow .fgrid { grid-template-columns: 1fr; } }
+
+/* narrow phones (e.g. Samsung at 320–360px): the hero title lines never wrap, so they scale with the screen instead of pushing the page wider */
+@media (max-width: 860px) {
+  .home-hero .hero-pocket h1, .art-hero .hero-pocket h1, .hero-pocket h1 { font-size: clamp(30px, 12.2vw, 50px); }
+  .prog-pill { white-space: normal; line-height: 1.35; }
+}
